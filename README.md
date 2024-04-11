@@ -1,7 +1,9 @@
 # Scaling AI from PoC to MVP: A Blueprint for MVP-RAG-Based LLM Systems
 
-## Overview:
-In 2022, [Gartner](https://www.gartner.com/en/newsroom/press-releases/2022-08-22-gartner-survey-reveals-80-percent-of-executives-think-automation-can-be-applied-to-any-business-decision) revealed that approximately 54% of AI initiatives surveyed among 699 executives fail to transition from the Proof of Concept(PoC) stage to production. This statistic underscores a significant challenge in scaling AI technologies—a sentiment echoed by one of Gartner's VPs. Reflecting on personal experiences, the journey to launching successful AI projects is fraught with obstacles. This repository aims to distill personal insights from my previous experiences into a practical lessons learned framework, with a particular emphasis on leveraging Azure services.
+## Intro:
+In 2022, [Gartner](https://www.gartner.com/en/newsroom/press-releases/2022-08-22-gartner-survey-reveals-80-percent-of-executives-think-automation-can-be-applied-to-any-business-decision) revealed that approximately 54% of AI initiatives surveyed among 699 executives fail to transition from the Proof of Concept(PoC) stage to production. This statistic underscores a significant challenge in scaling AI technologies—a sentiment echoed by one of Gartner's VPs. This high rate of attrition highlights the complexities involved in moving from a controlled, experimental environment to production-ready solutions that deliver real value.
+
+This document distills personal insights and lessons learned from firsthand experiences in developing and scaling MVP-RAG-Based LLM Systems, offering a structured blueprint for overcoming common hurdles that I experienced adding months to our time-to-market. By focusing on strategic modularity, interoperability, and operational efficiency, I aim to provide a practical framework that leverages Azure services. In hopes that you the reader gain value and quickly go from MVE to MVP.
 
 ## Blueprint and Lessons Learned
 Our initial pipeline design, while adequate for experimental stages, proved problematic when scaling. Originally, our approach was somewhat monolithic, comprising various interconnected phases without clear separations. This structure led to significant delays and complications. Learning from this, we pivoted to a [Feature/Training/Inference (FTI) architecture](https://www.hopsworks.ai/post/mlops-to-ml-systems-with-fti-pipelines), emphasizing:
@@ -31,6 +33,7 @@ These refinements not only streamlined our development process but also fortifie
 ## 3. Feature Store
 - **Data Preparation for RAG and LLM**: Our Feature Store is structured to accommodate both non-embedded (cleaned) and embedded (chunked) data snapshots. This strategic storage supports diverse uses, from prompt and answer generation for training to RAG implementation, facilitating seamless transitions between different stages of data processing and utilization.
 - **Schema-Driven Data Management**: The architecture of our Feature Store is designed to adapt to various data source types, guiding how data is chunked, embedded, and subsequently loaded into the Vector Database (AI Search). This flexibility ensures optimal data representation for our retrieval-augmented generation tasks and LLM fine-tuning (once you are post-MVP, really consider fine-tuning).
+- **Version Control and Data Consistency**: Maintaining version control within the Feature Store was critical for ensuring data integrity over time. We implement rigorous protocols to track changes and manage data versions, which helps in preventing data drift.
 
 ## 4 & 5. Training and Inference Pipelines
 - **Holistic Evaluation with Large LLMs**: Incorporating the largest available LLM for automated evaluations proved invaluable, offering comprehensive insights at negligible additional costs. This strategy significantly contributed to the quality and efficacy of our model assessments.
