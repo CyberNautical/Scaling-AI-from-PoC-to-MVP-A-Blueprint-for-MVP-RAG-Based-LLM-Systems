@@ -3,7 +3,7 @@
 ## Overview:
 In 2022, [Gartner](https://www.gartner.com/en/newsroom/press-releases/2022-08-22-gartner-survey-reveals-80-percent-of-executives-think-automation-can-be-applied-to-any-business-decision) revealed that approximately 54% of AI initiatives surveyed among 699 executives fail to transition from the Proof of Concept(PoC) stage to production. This statistic underscores a significant challenge in scaling AI technologies—a sentiment echoed by one of Gartner's VPs. Reflecting on personal experiences, the journey to launching successful AI projects is fraught with obstacles. This repository aims to distill personal insights from my previous experiences into a practical lessons learned framework, with a particular emphasis on leveraging Azure services.
 
-## North Star
+## Blueprint and Lessons Learned
 Our initial pipeline design, while adequate for experimental stages, proved problematic when scaling. Originally, our approach was somewhat monolithic, comprising various interconnected phases without clear separations. This structure led to significant delays and complications. Learning from this, we pivoted to a [Feature/Training/Inference (FTI) architecture](https://www.hopsworks.ai/post/mlops-to-ml-systems-with-fti-pipelines), emphasizing:
 
 1. **Modularity**: Breaking down the pipeline into distinct, manageable components—Feature Pipeline, Training Pipeline, and Inference Pipeline—facilitates better management and scalability.
